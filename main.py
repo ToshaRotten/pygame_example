@@ -34,13 +34,17 @@ while True:
         if event.type == pygame.KEYDOWN:
             map[player_pos[1]][player_pos[0]] = 0
             if event.key == pygame.K_UP:
-                player_pos = (player_pos[0], player_pos[1] - 1)
+                if map[player_pos[0]][player_pos[1] - 1] != 1:
+                    player_pos = (player_pos[0], player_pos[1] - 1)
             elif event.key == pygame.K_DOWN:
-                player_pos = (player_pos[0], player_pos[1] + 1)
+                if map[player_pos[0]][player_pos[1] + 1] != 1:
+                    player_pos = (player_pos[0], player_pos[1] + 1)
             elif event.key == pygame.K_LEFT:
-                player_pos = (player_pos[0] - 1, player_pos[1])
+                if map[player_pos[0] - 1][player_pos[1]] != 1:
+                    player_pos = (player_pos[0] - 1, player_pos[1])
             elif event.key == pygame.K_RIGHT:
-                player_pos = (player_pos[0] + 1, player_pos[1])
+                if map[player_pos[0] + 1][player_pos[1]] != 1:
+                    player_pos = (player_pos[0] + 1, player_pos[1])
 
         map[player_pos[1]][player_pos[0]] = 2
 
