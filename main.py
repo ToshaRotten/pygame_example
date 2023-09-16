@@ -1,5 +1,6 @@
 import sys
 import pygame
+import utils
 
 with open("levels/level1.csv") as file:
     map = [list(map(int, line.strip().split(","))) for line in file]
@@ -14,6 +15,7 @@ pygame.init()
 
 window = pygame.display.set_mode((WINDOW_WIDTH, WINDOW_HEIGHT))
 window.fill(BG_COLOR)
+
 
 tiles = {
     0:
@@ -32,6 +34,9 @@ while True:
             sys.exit()
 
         if event.type == pygame.KEYDOWN:
+            if event.key == pygame.K_0:
+                utils.printMap()
+            print(player_pos)
             map[player_pos[1]][player_pos[0]] = 0
             if event.key == pygame.K_UP:
                 if map[player_pos[0]][player_pos[1] - 1] != 1:
@@ -40,11 +45,13 @@ while True:
                 if map[player_pos[0]][player_pos[1] + 1] != 1:
                     player_pos = (player_pos[0], player_pos[1] + 1)
             elif event.key == pygame.K_LEFT:
+                print(map)
                 if map[player_pos[0] - 1][player_pos[1]] != 1:
                     player_pos = (player_pos[0] - 1, player_pos[1])
             elif event.key == pygame.K_RIGHT:
                 if map[player_pos[0] + 1][player_pos[1]] != 1:
                     player_pos = (player_pos[0] + 1, player_pos[1])
+
 
         map[player_pos[1]][player_pos[0]] = 2
 
