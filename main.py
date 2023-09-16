@@ -25,7 +25,6 @@ tiles = {
 tile_size = 32
 
 
-
 while True:
     for event in pygame.event.get():
         if event.type == pygame.QUIT:
@@ -33,6 +32,7 @@ while True:
             sys.exit()
 
         if event.type == pygame.KEYDOWN:
+            map[player_pos[1]][player_pos[0]] = 0
             if event.key == pygame.K_UP:
                 player_pos = (player_pos[0], player_pos[1] - 1)
             elif event.key == pygame.K_DOWN:
@@ -46,6 +46,8 @@ while True:
 
         for i in range(len(map)):
             for j in range(len(map[i])):
+                if map[i][j] == 0:
+                    pygame.draw.rect(window, (255,255,255), pygame.Rect(j*32, i*32, 32,32))
                 if map[i][j] == 1:
                     window.blit(tiles[0], (j * tile_size, i * tile_size))
                 if map[i][j] == 2:
