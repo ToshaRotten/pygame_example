@@ -2,7 +2,7 @@ import pygame
 
 tiles = {
     0:
-        pygame.image.load("../img/bricks.png"),
+        pygame.image.load("img/bricks.png"),
 }
 class Level:
 
