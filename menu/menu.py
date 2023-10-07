@@ -8,8 +8,11 @@ def menu(selector):
     elif selector == 3:
         print("exit")
 
-def menu_update(event):
+def update(event):
     if event.key == pygame.K_UP:
         return -1
     elif event.key == pygame.K_DOWN:
         return 1
+
+def draw():
+    pass
